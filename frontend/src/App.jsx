@@ -1,16 +1,39 @@
 import React from 'react';
-import styled from 'styled-components';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
+import Login from './Components/Login';
+import Homepage from './Components/Homepage';
+import SpendHistory from './Components/SpendHistory';
+import Contacts from './Components/Contacts';
 
-const Header = styled.h1`
-	color: red;
-	display: flex;
-	height: 100vh;
-	justify-content: center;
-	align-items: center;
-	font-family: 'Hack';
-`;
 function App() {
-	return <Header>Hello World</Header>;
+	const loggedIn = localStorage.getItem('loggedIn');
+
+	if (!loggedIn) {
+		return (
+			<Router>
+				<Route path="/login" component={Login} />
+				<Redirect to="/login" />
+			</Router>
+		);
+	}
+
+	return (
+		<Router>
+			<Switch>
+				<Route exact path="/" component={Homepage} />
+				<Route path="/spend-history" component={SpendHistory} />
+				<Route path="/contacts" component={Contacts} />
+				<Route>
+					<Redirect to="/" />
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
 
 export default App;
