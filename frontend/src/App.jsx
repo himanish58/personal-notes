@@ -5,6 +5,7 @@ import {
 	Route,
 	Redirect,
 } from 'react-router-dom';
+import Header from './Components/Header';
 import Login from './Components/Login';
 import Homepage from './Components/Homepage';
 import SpendHistory from './Components/SpendHistory';
@@ -15,24 +16,30 @@ function App() {
 
 	if (!loggedIn) {
 		return (
-			<Router>
-				<Route path="/login" component={Login} />
-				<Redirect to="/login" />
-			</Router>
+			<>
+				<Header />
+				<Router>
+					<Route path="/login" component={Login} />
+					<Redirect to="/login" />
+				</Router>
+			</>
 		);
 	}
 
 	return (
-		<Router>
-			<Switch>
-				<Route exact path="/" component={Homepage} />
-				<Route path="/spend-history" component={SpendHistory} />
-				<Route path="/contacts" component={Contacts} />
-				<Route>
-					<Redirect to="/" />
-				</Route>
-			</Switch>
-		</Router>
+		<>
+			<Header />
+			<Router>
+				<Switch>
+					<Route exact path="/" component={Homepage} />
+					<Route path="/spend-history" component={SpendHistory} />
+					<Route path="/contacts" component={Contacts} />
+					<Route>
+						<Redirect to="/" />
+					</Route>
+				</Switch>
+			</Router>
+		</>
 	);
 }
 
