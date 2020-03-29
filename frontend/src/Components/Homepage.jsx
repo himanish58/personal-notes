@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import RedirectionButton from './Button';
+import SpendHistory from './SpendHistory';
+import Contacts from './Contacts';
 
-const Heading = styled.h1`
-	color: rebeccapurple;
+const HomepageContainer = styled.div`
+	height: 200px;
+	margin-top: 150px;
 	display: flex;
-	height: 100vh;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Hack';
 `;
 
-const Homepage = () => <Heading>Homepage</Heading>;
+const Homepage = () => {
+	const [redirectionPath, setRedirectionPath] = useState('');
+
+	if (redirectionPath) {
+		console.log({ redirectionPath });
+		return (
+			<Router>
+				<Route path="spend-history" component={SpendHistory} />
+				<Route path="contacts" component={Contacts} />
+				<Redirect to="spend-history" />
+			</Router>
+		);
+	}
+
+	return (
+		<HomepageContainer>
+			<RedirectionButton
+				label="Spend History"
+				onClickFunction={() => setRedirectionPath('spend-history')}
+			/>
+			<RedirectionButton
+				label="Client Contacts"
+				onClickFunction={() => setRedirectionPath('contacts')}
+			/>
+		</HomepageContainer>
+	);
+};
 
 export default Homepage;
