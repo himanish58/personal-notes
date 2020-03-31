@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import RedirectionButton from './Button';
-import SpendHistory from './SpendHistory';
-import Contacts from './Contacts';
 
 const HomepageContainer = styled.div`
 	height: 200px;
@@ -16,16 +14,7 @@ const HomepageContainer = styled.div`
 const Homepage = () => {
 	const [redirectionPath, setRedirectionPath] = useState('');
 
-	if (redirectionPath) {
-		console.log({ redirectionPath });
-		return (
-			<Router>
-				<Route path="spend-history" component={SpendHistory} />
-				<Route path="contacts" component={Contacts} />
-				<Redirect to="spend-history" />
-			</Router>
-		);
-	}
+	if (redirectionPath) return <Redirect to={redirectionPath} />;
 
 	return (
 		<HomepageContainer>
