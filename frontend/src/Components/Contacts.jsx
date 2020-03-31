@@ -1,15 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Heading = styled.h1`
-	color: rebeccapurple;
+const Contact = styled.div`
 	display: flex;
-	height: 100vh;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Hack';
+	flex-direction: column;
 `;
 
-const Contacts = () => <Heading>Client Contacts Management</Heading>;
+const Box = styled.div`
+	min-height: 200px;
+	width: 50%;
+	margin: 16px;
+	padding: 16px;
+	background: #ffffff;
+`;
+
+const Contacts = () => (
+	<Contact>
+		<h1>Contacts</h1>
+		{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
+			<Box />
+		))}
+	</Contact>
+);
 
 export default Contacts;
