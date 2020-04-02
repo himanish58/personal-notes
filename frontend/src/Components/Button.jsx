@@ -4,10 +4,11 @@ import styled from 'styled-components';
 const CustomButton = styled.button`
 	background: #1ba94c;
 	color: #f5f5f5;
-	min-width: 200px;
+	min-width: 160px;
 	font-size: 20px;
 	margin: 16px;
 	padding: 12px;
+	border: 0;
 	border-radius: 4px;
 
 	&:disabled {
