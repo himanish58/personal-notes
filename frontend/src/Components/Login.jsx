@@ -28,21 +28,15 @@ const LoginContainer = styled.div`
 	}
 `;
 
-const Login = () => {
+const Login = ({ loggedIn, login }) => {
 	const usernameRef = useRef();
 	const passwordRef = useRef();
 	const [disableLogin, toggleDisableLogin] = useState(true);
-	const [loggedIn, setLoggedIn] = useState(false);
 
 	const setDisableLogin = () => {
 		toggleDisableLogin(
 			!(usernameRef.current.value && passwordRef.current.value),
 		);
-	};
-
-	const login = () => {
-		localStorage.setItem('loggedIn', true);
-		setLoggedIn(true);
 	};
 
 	if (loggedIn) {

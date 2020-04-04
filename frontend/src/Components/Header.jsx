@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
@@ -20,21 +20,13 @@ const HeaderContainer = styled.div`
 	}
 `;
 
-const Header = () => {
-	const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn'));
-	const logout = () => {
-		localStorage.clear();
-		setLoggedIn(false);
-	};
-
-	return (
-		<HeaderContainer>
-			<h1>Personal Notes</h1>
-			{loggedIn && (
-				<Button label="Logout" disable={false} onClickFunction={logout} />
-			)}
-		</HeaderContainer>
-	);
-};
+const Header = ({ loggedIn, logout }) => (
+	<HeaderContainer>
+		<h1>Personal Notes</h1>
+		{loggedIn && (
+			<Button label="Logout" disable={false} onClickFunction={logout} />
+		)}
+	</HeaderContainer>
+);
 
 export default Header;

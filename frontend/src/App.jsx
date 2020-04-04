@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
@@ -12,14 +12,27 @@ import SpendHistory from './Components/SpendHistory';
 import Contacts from './Components/Contacts';
 
 function App() {
-	const loggedIn = localStorage.getItem('loggedIn');
+	const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn'));
+
+	const toggleLogin = () => {
+		if (localStorage.getItem('loggedIn')) {
+			localStorage.clear();
+			setLoggedIn(false);
+		} else {
+			localStorage.setItem('loggedIn', true);
+			setLoggedIn(true);
+		}
+	};
 
 	if (!loggedIn) {
 		return (
 			<>
 				<Header />
 				<Router>
-					<Route path="/login" component={Login} />
+					<Route
+						path="/login"
+						render={() => <Login loggedIn={loggedIn} login={toggleLogin} />}
+					/>
 					<Redirect to="/login" />
 				</Router>
 			</>
@@ -28,7 +41,7 @@ function App() {
 
 	return (
 		<>
-			<Header />
+			<Header loggedIn={loggedIn} logout={toggleLogin} />
 			<Router>
 				<Switch>
 					<Route exact path="/" component={Homepage} />
