@@ -6,10 +6,10 @@ const port = process.env.PORT || 5000;
 server.use(jsonServer.bodyParser);
 server.use(middlewares);
 
-server.get('/users', (request, response) => {
+server.get('/contacts', (request, response) => {
 	if (request.method === 'GET') {
-		const users = require('./users');
-		response.status(200).jsonp(users());
+		const contacts = require('./contacts');
+		response.status(200).jsonp(contacts());
 	}
 });
 
