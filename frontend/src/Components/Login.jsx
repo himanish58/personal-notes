@@ -53,15 +53,11 @@ const Login = ({ loggedIn, login }) => {
 			<h1>Login</h1>
 			<input
 				type="text"
-				name="username"
-				id="username"
 				ref={usernameRef}
 				placeholder="Username"
 				onChange={setDisableLogin}
 			/>
 			<input
-				id="password"
-				name="password"
 				type="password"
 				ref={passwordRef}
 				placeholder="Password"

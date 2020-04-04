@@ -6,7 +6,9 @@ module.exports = () => {
 			id: casual.uuid,
 			name: casual.full_name,
 			address: `${casual.street}, ${casual.city}, ${casual.country}`,
-			phone: casual.phone
+			phone: casual.phone,
+			email: casual.email.toLowerCase(),
+			company: casual.company_name
 		};
 	});
 	const contacts = [];

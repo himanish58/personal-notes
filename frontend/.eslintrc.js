@@ -23,5 +23,9 @@ module.exports = {
 		'react/prop-types': 0,
 		'react/jsx-indent': [2, 'tab'],
 		'react/jsx-indent-props': [2, 'tab'],
+		'object-curly-newline': 0,
+		'react/jsx-one-expression-per-line': 0,
+		'implicit-arrow-linebreak': 0,
+		'operator-linebreak': 0,
 	},
 };
