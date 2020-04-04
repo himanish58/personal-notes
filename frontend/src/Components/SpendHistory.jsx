@@ -1,15 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import PageHeader from './PageHeader';
+import SpendingBox from './SpendingBox';
+import getSpendHistory from '../requests/spendHistory';
 
-const Heading = styled.h1`
-	color: rebeccapurple;
+const SpendContainer = styled.div`
 	display: flex;
-	height: 100vh;
 	justify-content: center;
 	align-items: center;
-	font-family: 'Hack';
+	flex-direction: column;
+
+	input {
+		border: 0;
+		border-bottom: 1px solid #1ba94c;
+		width: 300px;
+		padding: 10px;
+		margin: 16px 0;
+		font-size: 16px;
+		font-family: 'Roboto';
+		background: #e7eeef;
+
+		&::placeholder {
+			color: #1ba94c;
+		}
+	}
 `;
 
-const SpendHistory = () => <Heading>Spend History</Heading>;
+const SpendHistory = () => {
+	const [spendings, setSpendings] = useState([]);
+	const [filteredSpendings, setFilteredSpendings] = useState([]);
+	const spendingSearchRef = useRef();
+	useEffect(() => {
+		(async () => {
+			const response = await getSpendHistory();
+			if (response.status === 200) {
+				setSpendings(response.data);
+				setFilteredSpendings(response.data);
+			} else {
+				console.error(
+					`Error in SpendHistory.useEffect.getSpendHistory: ${response}`,
+				);
+			}
+		})();
+	}, []);
+
+	const searchSpendings = () => {
+		const {
+			current: { value },
+		} = spendingSearchRef;
+		const modifiedSpendings = spendings.filter(
+			({ id, merchant }) =>
+				id.toLowerCase().includes(value.trim().toLowerCase()) ||
+				merchant.toLowerCase().includes(value.trim().toLowerCase()),
+		);
+		setFilteredSpendings(modifiedSpendings);
+	};
+
+	return (
+		<SpendContainer>
+			<PageHeader
+				title="Spend History"
+				placeholder="Search Spendings..."
+				onChangeFunction={searchSpendings}
+				searchRef={spendingSearchRef}
+			/>
+			{filteredSpendings.map(({ id, merchant, date, amount }) => (
+				<SpendingBox
+					key={id}
+					id={id}
+					merchant={merchant}
+					date={date}
+					amount={amount}
+				/>
+			))}
+		</SpendContainer>
+	);
+};
 
 export default SpendHistory;

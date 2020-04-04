@@ -13,6 +13,13 @@ server.get('/contacts', (request, response) => {
 	}
 });
 
+server.get('/spend-history', (request, response) => {
+	if (request.method === 'GET') {
+		const spendings = require('./spendHistory');
+		response.status(200).jsonp(spendings());
+	}
+});
+
 server.listen(port, () => {
 	console.log('JSON Server is running');
 });
