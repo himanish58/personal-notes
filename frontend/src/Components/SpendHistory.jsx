@@ -11,6 +11,11 @@ const SpendContainer = styled.div`
 	flex-direction: column;
 `;
 
+const NoResult = styled.h2`
+	margin-top: 100px;
+	color: #afafaf;
+`;
+
 const SpendHistory = () => {
 	const [spendings, setSpendings] = useState([]);
 	const [filteredSpendings, setFilteredSpendings] = useState([]);
@@ -49,15 +54,19 @@ const SpendHistory = () => {
 				onChangeFunction={searchSpendings}
 				searchRef={spendingSearchRef}
 			/>
-			{filteredSpendings.map(({ id, merchant, date, amount }) => (
-				<SpendingBox
-					key={id}
-					id={id}
-					merchant={merchant}
-					date={date}
-					amount={amount}
-				/>
-			))}
+			{filteredSpendings.length ? (
+				filteredSpendings.map(({ id, merchant, date, amount }) => (
+					<SpendingBox
+						key={id}
+						id={id}
+						merchant={merchant}
+						date={date}
+						amount={amount}
+					/>
+				))
+			) : (
+				<NoResult>No Result Found...</NoResult>
+			)}
 		</SpendContainer>
 	);
 };

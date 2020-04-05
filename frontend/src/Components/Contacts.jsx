@@ -11,6 +11,11 @@ const Contact = styled.div`
 	flex-direction: column;
 `;
 
+const NoResult = styled.h2`
+	margin-top: 100px;
+	color: #afafaf;
+`;
+
 const Contacts = () => {
 	const [contacts, setContacts] = useState([]);
 	const [filteredContacts, setFilteredContacts] = useState([]);
@@ -46,16 +51,20 @@ const Contacts = () => {
 				onChangeFunction={searchContacts}
 				searchRef={contactSearchRef}
 			/>
-			{filteredContacts.map(({ id, name, phone, email, address, company }) => (
-				<ContactBox
-					key={id}
-					name={name}
-					phone={phone}
-					email={email}
-					address={address}
-					company={company}
-				/>
-			))}
+			{filteredContacts.length ? (
+				filteredContacts.map(({ id, name, phone, email, address, company }) => (
+					<ContactBox
+						key={id}
+						name={name}
+						phone={phone}
+						email={email}
+						address={address}
+						company={company}
+					/>
+				))
+			) : (
+				<NoResult>No Result Found...</NoResult>
+			)}
 		</Contact>
 	);
 };
