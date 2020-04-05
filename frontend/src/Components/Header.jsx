@@ -18,6 +18,12 @@ const HeaderContainer = styled.div`
 	h1 {
 		font-size: 36px;
 	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 24px;
+		}
+	}
 `;
 
 const Header = ({ loggedIn, logout }) => (

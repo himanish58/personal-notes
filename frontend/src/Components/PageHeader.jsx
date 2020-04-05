@@ -22,6 +22,14 @@ const Header = styled.div`
 			color: #1ba94c;
 		}
 	}
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+
+		input {
+			width: 80%;
+		}
+	}
 `;
 
 const PageHeader = ({ title, placeholder, onChangeFunction, searchRef }) => (
