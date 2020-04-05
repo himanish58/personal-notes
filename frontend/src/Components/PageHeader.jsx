@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Header = styled.div`
@@ -33,5 +34,12 @@ const PageHeader = ({ title, placeholder, onChangeFunction, searchRef }) => (
 		/>
 	</Header>
 );
+
+PageHeader.propTypes = {
+	title: PropTypes.string,
+	placeholder: PropTypes.string,
+	onChangeFunction: PropTypes.func,
+	searchRef: PropTypes.object,
+};
 
 export default PageHeader;

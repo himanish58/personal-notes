@@ -20,8 +20,9 @@ module.exports = {
 	rules: {
 		indent: [2, 'tab'],
 		'no-tabs': 0,
-		'react/prop-types': 0,
 		'react/jsx-indent': [2, 'tab'],
+		'react/require-default-props': 0,
+		'react/forbid-prop-types': 0,
 		'react/jsx-indent-props': [2, 'tab'],
 		'object-curly-newline': 0,
 		'react/jsx-one-expression-per-line': 0,

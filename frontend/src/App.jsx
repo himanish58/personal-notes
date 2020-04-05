@@ -12,7 +12,7 @@ import SpendHistory from './Components/SpendHistory';
 import Contacts from './Components/Contacts';
 
 function App() {
-	const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn'));
+	const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('loggedIn'));
 
 	const toggleLogin = () => {
 		if (localStorage.getItem('loggedIn')) {

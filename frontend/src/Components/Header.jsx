@@ -1,5 +1,5 @@
 import React from 'react';
-// import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from './Button';
 
@@ -28,5 +28,10 @@ const Header = ({ loggedIn, logout }) => (
 		)}
 	</HeaderContainer>
 );
+
+Header.propTypes = {
+	loggedIn: PropTypes.bool,
+	logout: PropTypes.func,
+};
 
 export default Header;

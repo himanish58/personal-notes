@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CustomButton = styled.button`
@@ -21,5 +22,11 @@ const Button = ({ label, onClickFunction, disable }) => (
 		{label}
 	</CustomButton>
 );
+
+Button.propTypes = {
+	label: PropTypes.string,
+	onClickFunction: PropTypes.func,
+	disable: PropTypes.bool,
+};
 
 export default Button;

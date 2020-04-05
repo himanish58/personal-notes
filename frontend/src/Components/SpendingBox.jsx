@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -94,6 +95,13 @@ const SpendingBox = ({ id, merchant, date, amount }) => {
 			<h4>Date : {spendingDetails.date}</h4>
 		</Container>
 	);
+};
+
+SpendingBox.propTypes = {
+	id: PropTypes.string,
+	merchant: PropTypes.string,
+	date: PropTypes.string,
+	amount: PropTypes.number,
 };
 
 export default SpendingBox;

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import HomePage from './Homepage';
@@ -70,6 +71,11 @@ const Login = ({ loggedIn, login }) => {
 			/>
 		</LoginContainer>
 	);
+};
+
+Login.propTypes = {
+	loggedIn: PropTypes.bool,
+	login: PropTypes.func,
 };
 
 export default Login;
