@@ -23,7 +23,7 @@ const Homepage = () => {
 				onClickFunction={() => setRedirectionPath('spend-history')}
 			/>
 			<RedirectionButton
-				label="Client Contacts"
+				label="Client Contacts Management"
 				onClickFunction={() => setRedirectionPath('contacts')}
 			/>
 		</HomepageContainer>

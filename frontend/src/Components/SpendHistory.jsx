@@ -9,21 +9,6 @@ const SpendContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-
-	input {
-		border: 0;
-		border-bottom: 1px solid #1ba94c;
-		width: 300px;
-		padding: 10px;
-		margin: 16px 0;
-		font-size: 16px;
-		font-family: 'Roboto';
-		background: #e7eeef;
-
-		&::placeholder {
-			color: #1ba94c;
-		}
-	}
 `;
 
 const SpendHistory = () => {
